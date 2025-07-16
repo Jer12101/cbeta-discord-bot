@@ -41,6 +41,16 @@ Create a `.env` file in the project root:
 
 ---
 
+## Disclaimer
+
+This bot does not include any CBETA XML data. To use it, users must download the XML files directly from [CBETA](https://www.cbeta.org) under their terms of use.
+
+CBETA XML data is licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Taiwan (CC BY-NC-SA 3.0 TW)](https://creativecommons.org/licenses/by-nc-sa/3.0/tw/). This means it is free for personal and non-commercial use with proper attribution. Commercial use is prohibited without permission.
+
+This project is intended for personal, educational, and non-commercial study only.
+
+---
+
 ## Prepare the Database
 
 Place CBETA XML files in a `/data` subdirectory and parse them:
