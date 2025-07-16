@@ -31,8 +31,9 @@ export class QuoteCommand {
             if (embedDescription.length > 4096) {
                 throw new Error(`Embed description too long (${embedDescription.length} characters) for ${quote.sutra_name} - ${quote.chapter}`);
             }
+            await interaction.deferReply();
 
-            await interaction.reply({
+            await interaction.editReply({
                 embeds: [{
                     title: `${quote.sutra_name} - ${quote.chapter}`,
                     description: embedDescription,
@@ -43,7 +44,7 @@ export class QuoteCommand {
 
             // Tell the user in the interaction
             if (interaction.replied || interaction.deferred) {
-                await interaction.followUp('⚠️ 發生錯誤，已通知管理員。');
+                await interaction.editReply('⚠️ 發生錯誤，已通知管理員。');
             } else {
                 await interaction.reply('⚠️ 發生錯誤，已通知管理員。');
             }
