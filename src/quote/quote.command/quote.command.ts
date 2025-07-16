@@ -19,10 +19,12 @@ export class QuoteCommand {
         @Context() [interaction]: SlashCommandContext
     ) {
         try {
+            await interaction.deferReply();
+
             const quote: Quote | undefined = this.quoteService.getRandomQuote();
 
             if (!quote) {
-                await interaction.reply('找不到任何經文，請先匯入資料庫！');
+                await interaction.editReply('找不到任何經文，請先匯入資料庫！');
                 return;
             }
             const embedDescription = `「${quote.text}」`;
@@ -31,7 +33,7 @@ export class QuoteCommand {
             if (embedDescription.length > 4096) {
                 throw new Error(`Embed description too long (${embedDescription.length} characters) for ${quote.sutra_name} - ${quote.chapter}`);
             }
-            await interaction.deferReply();
+            
 
             await interaction.editReply({
                 embeds: [{
